@@ -2,20 +2,18 @@
 % Please edit documentation in R/b_read.R
 \name{b_read_meas_data}
 \alias{b_read_meas_data}
-\title{Read measurement data from a text file}
+\title{Read measurement data from a CSV file}
 \usage{
-b_read_meas_data(filepath, sep = "\\t")
+b_read_meas_data(filepath)
 }
 \arguments{
 \item{filepath}{character string giving the path to the file.}
-
-\item{sep}{field separator; defaults to \code{"\\t"}.}
 }
 \value{
 A numeric matrix with \eqn{m} rows and two columns named
   \code{y} and \code{uy}.
 }
 \description{
-Reads a tab-separated file with two columns: instrument response \eqn{y}
+Reads a comma-separated file with two columns: instrument response \eqn{y}
 and standard uncertainty \eqn{u(y)}.  No header line is expected.
 }

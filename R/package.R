@@ -6,7 +6,7 @@
 #'
 #' @keywords internal
 #' @importFrom stats coef cov lm poly rnorm sd
-#' @importFrom utils read.table
+#' @importFrom utils read.csv
 #' @importFrom grDevices adjustcolor
 #' @importFrom graphics arrows grid legend lines par points polygon
 "_PACKAGE"

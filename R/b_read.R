@@ -1,36 +1,34 @@
-# Read calibration / measurement data from tab-separated text files.
+# Read calibration / measurement data from CSV files.
 
-#' Read calibration data from a text file
+#' Read calibration data from a CSV file
 #'
-#' Reads a tab-separated file with four columns: assigned value \eqn{x},
+#' Reads a comma-separated file with four columns: assigned value \eqn{x},
 #' standard uncertainty \eqn{u(x)}, instrument response \eqn{y}, standard
 #' uncertainty \eqn{u(y)}.  No header line is expected.
 #'
 #' @param filepath character string giving the path to the file.
-#' @param sep field separator; defaults to \code{"\\t"}.
 #'
 #' @return A numeric matrix with \eqn{n} rows and four columns named
 #'   \code{x}, \code{ux}, \code{y}, \code{uy}.
 #' @export
-b_read_cal_data <- function(filepath, sep = "\t") {
-  as.matrix(read.table(filepath, header = FALSE, sep = sep,
-                       col.names = c("x", "ux", "y", "uy")))
+b_read_cal_data <- function(filepath) {
+  as.matrix(read.csv(filepath, header = FALSE,
+                     col.names = c("x", "ux", "y", "uy")))
 }
 
-#' Read measurement data from a text file
+#' Read measurement data from a CSV file
 #'
-#' Reads a tab-separated file with two columns: instrument response \eqn{y}
+#' Reads a comma-separated file with two columns: instrument response \eqn{y}
 #' and standard uncertainty \eqn{u(y)}.  No header line is expected.
 #'
 #' @param filepath character string giving the path to the file.
-#' @param sep field separator; defaults to \code{"\\t"}.
 #'
 #' @return A numeric matrix with \eqn{m} rows and two columns named
 #'   \code{y} and \code{uy}.
 #' @export
-b_read_meas_data <- function(filepath, sep = "\t") {
-  as.matrix(read.table(filepath, header = FALSE, sep = sep,
-                       col.names = c("y", "uy")))
+b_read_meas_data <- function(filepath) {
+  as.matrix(read.csv(filepath, header = FALSE,
+                     col.names = c("y", "uy")))
 }
 
 #' Path to a package example data file
@@ -47,7 +45,7 @@ b_read_meas_data <- function(filepath, sep = "\t") {
 b_example_data_path <- function(example, type) {
   stopifnot(example %in% 1:3, type %in% c("cal", "meas"))
   system.file("extdata",
-              sprintf("b_least_%d_data_%s.txt", example, type),
+              sprintf("b_least_%d_data_%s.csv", example, type),
               package = "ISO6143.2001",
               mustWork = TRUE)
 }

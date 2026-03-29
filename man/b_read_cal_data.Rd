@@ -2,21 +2,19 @@
 % Please edit documentation in R/b_read.R
 \name{b_read_cal_data}
 \alias{b_read_cal_data}
-\title{Read calibration data from a text file}
+\title{Read calibration data from a CSV file}
 \usage{
-b_read_cal_data(filepath, sep = "\\t")
+b_read_cal_data(filepath)
 }
 \arguments{
 \item{filepath}{character string giving the path to the file.}
-
-\item{sep}{field separator; defaults to \code{"\\t"}.}
 }
 \value{
 A numeric matrix with \eqn{n} rows and four columns named
   \code{x}, \code{ux}, \code{y}, \code{uy}.
 }
 \description{
-Reads a tab-separated file with four columns: assigned value \eqn{x},
+Reads a comma-separated file with four columns: assigned value \eqn{x},
 standard uncertainty \eqn{u(x)}, instrument response \eqn{y}, standard
 uncertainty \eqn{u(y)}.  No header line is expected.
 }
