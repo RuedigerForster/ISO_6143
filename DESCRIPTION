@@ -1,0 +1,31 @@
+Package: ISO6143.2001
+Version: 0.1-0
+Date: 2026-03-29
+Title: Calibration of Gas Analysers per ISO 6143:2001
+Authors@R: c(
+    person("Rüdiger", "Forster", role = c("aut", "cre"),
+           email = "meticulous.measurements@gmail.com"),
+    person("Wolfram", "Bremser", role = "aut",
+           comment = "Author of the original B_LEAST program (BAM)"))
+Depends: R (>= 3.5.0)
+Imports: minpack.lm (>= 1.2)
+Suggests: knitr,
+          rmarkdown,
+          testthat (>= 3.0.0)
+Encoding: UTF-8
+LazyData: false
+ByteCompile: true
+Description: Implements the B LEAST calibration algorithm of ISO 6143:2001
+    "Gas analysis — Comparison methods for determining and checking the
+    composition of calibration gas mixtures". Fits polynomial, power, and
+    exponential calibration functions to reference gas standards using
+    errors-in-both-variables least squares (Levenberg-Marquardt), propagates
+    measurement uncertainty through the fitted function via analytical
+    Jacobians, and provides optional Monte Carlo verification. Numerical
+    examples from Annex B of the standard are included. The algorithm is a
+    port of the METAS B LEAST Python implementation by Michael Wollensack
+    (METAS).
+License: GPL (>= 3)
+URL: https://github.com/RuedigerForster/ISO_6143
+BugReports: https://github.com/RuedigerForster/ISO_6143/issues
+RoxygenNote: 7.3.2

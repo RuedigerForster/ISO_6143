@@ -1,0 +1,15 @@
+# R build artefacts
+*.Rcheck/
+*.tar.gz
+*.tgz
+.Rproj.user/
+.Rhistory
+.RData
+.httr-oauth
+
+# Generated documentation (committed only when building for CRAN)
+# man/ is committed because we use devtools::document()
+
+# OS
+.DS_Store
+Thumbs.db
