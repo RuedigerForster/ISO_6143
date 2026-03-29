@@ -26,3 +26,9 @@ Draws the fitted calibration curve with a \eqn{k=2} coverage band,
 calibration reference points with error bars and uncertainty ellipses, and
 measurement points with their propagated uncertainties.
 }
+\details{
+Colour scheme: axes and grid in steel blue, fitted curve in poison green
+(\code{"#39FF14"}), data points and uncertainty indicators in dark orange.
+Calibration reference points are drawn as filled circles (\code{pch = 16});
+measurement points as filled triangles (\code{pch = 17}).
+}

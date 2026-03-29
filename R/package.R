@@ -8,5 +8,5 @@
 #' @importFrom stats coef cov lm poly rnorm sd
 #' @importFrom utils read.table
 #' @importFrom grDevices adjustcolor
-#' @importFrom graphics arrows legend lines points polygon
+#' @importFrom graphics arrows grid legend lines par points polygon
 "_PACKAGE"
