@@ -95,12 +95,16 @@
 #'   \code{\link{b_second_order_poly}}, \code{\link{b_third_order_poly}},
 #'   \code{\link{b_power_func}}, \code{\link{b_exp_func}}.
 #'
-#' @return A list with elements:
+#' @return An object of class \code{"B_Least"} (a named list) with elements:
 #'   \describe{
 #'     \item{b}{numeric vector of fitted coefficients.}
 #'     \item{b_cov}{covariance matrix of \code{b}.}
 #'     \item{b_res}{weighted residual vector of length \eqn{2n}.}
+#'     \item{func}{the calibration function used.}
+#'     \item{cal_data}{the calibration data matrix.}
 #'   }
+#'   Use \code{print()} to display a summary and \code{plot(fit, meas_data)}
+#'   to draw the calibration curve.
 #' @importFrom minpack.lm nls.lm nls.lm.control
 #' @export
 b_least <- function(cal_data, func) {
@@ -124,5 +128,8 @@ b_least <- function(cal_data, func) {
   b_opt    <- y2_b_opt[-seq_len(n)]
   b_cov    <- .b_covariance(lm_result$par, cal_data, y2_b_scale, func)
   b_res    <- .b_residuals(lm_result$par, cal_data, y2_b_scale, func)
-  list(b = b_opt, b_cov = b_cov, b_res = b_res)
+  result   <- list(b = b_opt, b_cov = b_cov, b_res = b_res,
+                   func = func, cal_data = cal_data)
+  class(result) <- "B_Least"
+  result
 }

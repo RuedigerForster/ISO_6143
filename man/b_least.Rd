@@ -16,12 +16,16 @@ response \eqn{y}, standard uncertainty \eqn{u(y)}.}
 \code{\link{b_power_func}}, \code{\link{b_exp_func}}.}
 }
 \value{
-A list with elements:
+An object of class \code{"B_Least"} (a named list) with elements:
   \describe{
     \item{b}{numeric vector of fitted coefficients.}
     \item{b_cov}{covariance matrix of \code{b}.}
     \item{b_res}{weighted residual vector of length \eqn{2n}.}
+    \item{func}{the calibration function used.}
+    \item{cal_data}{the calibration data matrix.}
   }
+  Use \code{print()} to display a summary and \code{plot(fit, meas_data)}
+  to draw the calibration curve.
 }
 \description{
 Uses Levenberg-Marquardt (MINPACK) with an analytic Jacobian to fit the

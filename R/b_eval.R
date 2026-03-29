@@ -2,15 +2,17 @@
 
 #' Evaluate fitted function at measurement points
 #'
-#' Given fitted coefficients \code{b} and their covariance \code{b_cov},
-#' evaluates the calibration function at each measurement and propagates
-#' uncertainty.
+#' Propagates uncertainty from the fitted calibration function to the assigned
+#' values at each measurement point.
 #'
 #' @param meas_data numeric matrix with \eqn{m} rows and two columns:
 #'   instrument response \eqn{y}, standard uncertainty \eqn{u(y)}.
-#' @param b numeric vector of fitted coefficients from \code{\link{b_least}}.
-#' @param b_cov covariance matrix of \code{b} from \code{\link{b_least}}.
-#' @param func calibration function used during fitting.
+#' @param b a \code{B_Least} object \emph{or} a numeric vector of
+#'   fitted coefficients.
+#' @param b_cov covariance matrix of \code{b} (required when \code{b} is a
+#'   numeric vector).
+#' @param func calibration function (required when \code{b} is a numeric
+#'   vector).
 #'
 #' @return A list with elements:
 #'   \describe{
@@ -18,8 +20,12 @@
 #'     \item{x_cov}{covariance matrix of \code{x}.}
 #'   }
 #' @export
-b_eval <- function(meas_data, b, b_cov, func) {
-  result <- b_eval_xy(meas_data, b, b_cov, func)
+b_eval <- function(meas_data, b, b_cov = NULL, func = NULL) {
+  if (inherits(b, "B_Least")) {
+    result <- b_eval_xy(meas_data, b$b, b$b_cov, b$func)
+  } else {
+    result <- b_eval_xy(meas_data, b, b_cov, func)
+  }
   list(x = result$x, x_cov = result$x_cov)
 }
 
@@ -42,7 +48,12 @@ b_eval <- function(meas_data, b, b_cov, func) {
 #'       (\eqn{m \times m}).}
 #'   }
 #' @export
-b_eval_xy <- function(meas_data, b, b_cov, func) {
+b_eval_xy <- function(meas_data, b, b_cov = NULL, func = NULL) {
+  if (inherits(b, "B_Least")) {
+    func  <- b$func
+    b_cov <- b$b_cov
+    b     <- b$b
+  }
   y   <- meas_data[, 1]
   uy  <- meas_data[, 2]
   ny  <- length(y)
@@ -57,8 +68,8 @@ b_eval_xy <- function(meas_data, b, b_cov, func) {
   jy      <- cbind(diag(ny), matrix(0, ny, nb))
   j       <- rbind(jx, jy)             # 2*ny x (ny + nb)
   cv_in   <- matrix(0, ny + nb, ny + nb)
-  cv_in[seq_len(ny), seq_len(ny)]                       <- diag(x = uy^2, nrow = ny, ncol = ny)
-  cv_in[(ny + 1):(ny + nb), (ny + 1):(ny + nb)]        <- b_cov
+  cv_in[seq_len(ny), seq_len(ny)]                    <- diag(x = uy^2, nrow = ny, ncol = ny)
+  cv_in[(ny + 1):(ny + nb), (ny + 1):(ny + nb)]     <- b_cov
   cov_out <- j %*% cv_in %*% t(j)     # 2*ny x 2*ny
   idx_x <- seq_len(ny)
   idx_y <- (ny + 1):(2 * ny)

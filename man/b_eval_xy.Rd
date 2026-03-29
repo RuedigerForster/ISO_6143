@@ -4,17 +4,20 @@
 \alias{b_eval_xy}
 \title{Evaluate fitted function and return full x-y covariance structure}
 \usage{
-b_eval_xy(meas_data, b, b_cov, func)
+b_eval_xy(meas_data, b, b_cov = NULL, func = NULL)
 }
 \arguments{
 \item{meas_data}{numeric matrix with \eqn{m} rows and two columns:
 instrument response \eqn{y}, standard uncertainty \eqn{u(y)}.}
 
-\item{b}{numeric vector of fitted coefficients from \code{\link{b_least}}.}
+\item{b}{a \code{B_Least} object \emph{or} a numeric vector of
+fitted coefficients.}
 
-\item{b_cov}{covariance matrix of \code{b} from \code{\link{b_least}}.}
+\item{b_cov}{covariance matrix of \code{b} (required when \code{b} is a
+numeric vector).}
 
-\item{func}{calibration function used during fitting.}
+\item{func}{calibration function (required when \code{b} is a numeric
+vector).}
 }
 \value{
 A list with elements:
