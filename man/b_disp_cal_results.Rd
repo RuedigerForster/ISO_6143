@@ -21,3 +21,4 @@ Prints the fitted coefficients, their standard uncertainties, the full
 covariance matrix, the sum of squared weighted residuals, and the maximum
 absolute weighted deviation.
 }
+\keyword{internal}

@@ -125,7 +125,7 @@ b_mean_cov_mc <- function(samples) {
 #' @param cal_samples array as returned by
 #'   \code{\link{b_sample_cal_data_mc}}.
 #' @return Invisibly \code{NULL}.
-#' @export
+#' @keywords internal
 b_disp_cal_data_mc <- function(cal_samples) {
   b_disp_cal_data(.b_cal_samples_to_cal_data(cal_samples))
 }
@@ -134,7 +134,7 @@ b_disp_cal_data_mc <- function(cal_samples) {
 #'
 #' @param b_samples matrix as returned by \code{\link{b_least_mc}}.
 #' @return Invisibly \code{NULL}.
-#' @export
+#' @keywords internal
 b_disp_cal_results_mc <- function(b_samples) {
   mc <- b_mean_cov_mc(b_samples)
   b_disp_cal_results(mc$mean, mc$cov, NA_real_)
@@ -146,7 +146,7 @@ b_disp_cal_results_mc <- function(b_samples) {
 #' @param meas_samples matrix as returned by
 #'   \code{\link{b_sample_meas_data_mc}}.
 #' @return Invisibly \code{NULL}.
-#' @export
+#' @keywords internal
 b_disp_meas_results_mc <- function(x_samples, meas_samples) {
   mc       <- b_mean_cov_mc(x_samples)
   meas_sum <- cbind(y  = colMeans(meas_samples),

@@ -6,7 +6,7 @@
 #'
 #' @param cal_data numeric matrix as returned by \code{\link{b_read_cal_data}}.
 #' @return Invisibly \code{NULL}.
-#' @export
+#' @keywords internal
 b_disp_cal_data <- function(cal_data) {
   cat("Calibration data:\n")
   print(cal_data)
@@ -23,7 +23,7 @@ b_disp_cal_data <- function(cal_data) {
 #' @param b_cov covariance matrix of \code{b}.
 #' @param b_res weighted residual vector (or \code{NA} for Monte Carlo output).
 #' @return Invisibly \code{NULL}.
-#' @export
+#' @keywords internal
 b_disp_cal_results <- function(b, b_cov, b_res) {
   cat("Coefficients b\n")
   print(b)
@@ -49,7 +49,7 @@ b_disp_cal_results <- function(b, b_cov, b_res) {
 #' @param meas_data numeric matrix as returned by
 #'   \code{\link{b_read_meas_data}}.
 #' @return Invisibly \code{NULL}.
-#' @export
+#' @keywords internal
 b_disp_meas_results <- function(x, x_cov, meas_data) {
   cat("Measurement results:\n")
   ux <- sqrt(diag(x_cov))

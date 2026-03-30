@@ -15,3 +15,4 @@ Invisibly \code{NULL}.
 \description{
 Display calibration results from Monte Carlo samples
 }
+\keyword{internal}

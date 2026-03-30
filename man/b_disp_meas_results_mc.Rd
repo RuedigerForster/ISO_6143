@@ -18,3 +18,4 @@ Invisibly \code{NULL}.
 \description{
 Display measurement results from Monte Carlo samples
 }
+\keyword{internal}

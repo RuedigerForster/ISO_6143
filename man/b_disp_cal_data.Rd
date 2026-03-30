@@ -15,3 +15,4 @@ Invisibly \code{NULL}.
 \description{
 Prints the calibration data matrix to the console.
 }
+\keyword{internal}

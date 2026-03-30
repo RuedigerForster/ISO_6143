@@ -2,12 +2,6 @@
 
 S3method(plot,B_Least)
 S3method(print,B_Least)
-export(b_disp_cal_data)
-export(b_disp_cal_data_mc)
-export(b_disp_cal_results)
-export(b_disp_cal_results_mc)
-export(b_disp_meas_results)
-export(b_disp_meas_results_mc)
 export(b_eval)
 export(b_eval_mc)
 export(b_eval_xy)

@@ -22,3 +22,4 @@ Prints a table of assigned values, their standard uncertainties, and the
 original measurement data.  For more than one measurement, also prints the
 full covariance matrix.
 }
+\keyword{internal}
